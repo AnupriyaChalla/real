@@ -25,11 +25,7 @@ function Modal({ show, onClose, property }) {
           alt={property.type} 
           className="w-full h-64 object-cover rounded-md mb-4" 
         />
-        <h2 className="text-2xl font-bold mb-2">{property.type}</h2>
-        <p className="text-lg mb-2"><strong>Title:</strong> {property.title}</p>
-        <p className="text-lg mb-2"><strong>Area:</strong> {property.area} sq ft</p>
-        <p className="text-lg mb-2"><strong>Bedrooms:</strong> {property.bedrooms}</p>
-        <p className="text-lg font-bold text-blue-600"><strong>Price:</strong> {property.price}</p>
+
       </div>
     </div>
   );

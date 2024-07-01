@@ -1,32 +1,48 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-//import Hero from './Components/Hero';
 import Home from './Components/Home';
 import About from './Components/About';
 import Contact from './Components/Contact';
 import Empty from './Components/Empty';
 import Footer from './Components/Footer';
 import FloatingButton from './Components/FloatingButton';
+import AdHome from './Components/AdminDashboard/AdHome';
+import FlatForm from './Components/AdminDashboard/FlatForm';
+
 function App() {
   return (
     <Router>
       <div>
-      
-        <Navbar/>
-        <FloatingButton/>
+        <FloatingButton />
         <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/empty' element={<Empty />} />
+          <Route path='/mars' element={<AdminLayout />} />
           
-          <Route path='/' exact element= {<Home/>} />
-          <Route path='/about' exact element={<About/>}/>
-          <Route path='/contact' exact  element={<Contact/>} /> 
-          <Route path='/empty' exact element={<Empty/>} />         
         </Routes>
-        
-        <Footer/>
       </div>
     </Router>
+  );
+}
+
+function AdminLayout() {
+  // Check if current route is '/admin'
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/mars');
+
+  // Render different layouts based on route
+  return (
+    <div>
+      {isAdminPage ? null : <Navbar />}
+      <AdHome />
+     {isAdminPage ? null : <Footer /> }
+    </div>
+    
+
   );
 }
 
