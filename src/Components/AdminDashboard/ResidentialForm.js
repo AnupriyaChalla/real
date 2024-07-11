@@ -5,27 +5,32 @@ const ResidentialForm = ({ onClose }) => {
     location: '',
     description: '',
     price: '',
-    imageFiles: [],
-    videoFile: null,
+    imageFiles: [], // Array to store multiple image files
+    videoFile: null, // Store single video file
   });
   const [uploadMessage, setUploadMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
+  console.log('ResidentialForm rendered'); // Debugging log
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form submitted'); // Debugging log
 
     setSubmitting(true);
-    setUploadMessage('');
+    setUploadMessage(''); // Clear any previous upload messages
 
     const formDataToSend = new FormData();
     formDataToSend.append('location', formData.location);
     formDataToSend.append('description', formData.description);
     formDataToSend.append('price', formData.price);
 
+    // Append each image file to formDataToSend
     formData.imageFiles.forEach((file, index) => {
       formDataToSend.append(`image_data${index + 1}`, file);
     });
 
+    // Append video file if it exists
     if (formData.videoFile) {
       formDataToSend.append('video_data', formData.videoFile);
     }
@@ -40,7 +45,7 @@ const ResidentialForm = ({ onClose }) => {
         throw new Error('Failed to upload property. Server returned ' + response.status);
       }
 
-      const data = await response.text();
+      const data = await response.text(); // Assuming your PHP script returns text
 
       setUploadMessage(data);
 
@@ -49,12 +54,13 @@ const ResidentialForm = ({ onClose }) => {
           location: '',
           description: '',
           price: '',
-          imageFiles: [],
-          videoFile: null,
+          imageFiles: [], // Clear uploaded image files
+          videoFile: null, // Clear uploaded video file
         });
 
+        // Close the popup after a brief delay (example: 2 seconds)
         setTimeout(() => {
-          setUploadMessage('');
+          setUploadMessage(''); // Clear success message after delay
           onClose();
         }, 2000);
       }
@@ -72,15 +78,24 @@ const ResidentialForm = ({ onClose }) => {
 
   const handleInputChange = (e) => {
     if (e.target.name === 'image') {
+      // Convert FileList to Array and update state
       const filesArray = Array.from(e.target.files);
+      // Limit the number of files to between 4 to 8
       const trimmedFilesArray = filesArray.slice(0, Math.min(filesArray.length, 8));
       setFormData({ ...formData, imageFiles: trimmedFilesArray });
     } else if (e.target.name === 'video') {
-      const videoFile = e.target.files[0];
+      // Update video file state
+      const videoFile = e.target.files[0]; // Assuming single file selection
       setFormData({ ...formData, videoFile });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
+  };
+
+  const handlePriceChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+    const formattedValue = value ? `${value} L` : ''; // Add ' L' suffix if value is not empty
+    setFormData({ ...formData, price: formattedValue });
   };
 
   return (
@@ -121,11 +136,11 @@ const ResidentialForm = ({ onClose }) => {
               Price
             </label>
             <input
-              type="number"
+              type="text"
               id="price"
               name="price"
               value={formData.price}
-              onChange={handleInputChange}
+              onChange={handlePriceChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               required
             />
@@ -139,7 +154,7 @@ const ResidentialForm = ({ onClose }) => {
               id="image"
               name="image"
               accept="image/*"
-              multiple
+              multiple // Allow multiple file selection
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               required

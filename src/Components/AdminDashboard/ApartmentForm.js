@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const ApartmentForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
-    address: '',
+    location: '',
     description: '',
     price: '',
     imageFiles: [], // Array to store multiple image files
@@ -18,7 +18,7 @@ const ApartmentForm = ({ onClose }) => {
     setUploadMessage(''); // Clear any previous upload messages
 
     const formDataToSend = new FormData();
-    formDataToSend.append('address', formData.address);
+    formDataToSend.append('location', formData.location);
     formDataToSend.append('description', formData.description);
     formDataToSend.append('price', formData.price);
 
@@ -39,16 +39,16 @@ const ApartmentForm = ({ onClose }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to upload apartment. Server returned ' + response.status);
+        throw new Error('Failed to upload property. Server returned ' + response.status);
       }
 
       const data = await response.text(); // Assuming your PHP script returns text
 
       setUploadMessage(data);
 
-      if (data.startsWith('Apartment uploaded successfully.')) {
+      if (data.startsWith('Property uploaded successfully.')) {
         setFormData({
-          address: '',
+          location: '',
           description: '',
           price: '',
           imageFiles: [], // Clear uploaded image files
@@ -62,8 +62,8 @@ const ApartmentForm = ({ onClose }) => {
         }, 2000);
       }
     } catch (error) {
-      console.error('Error uploading apartment:', error.message);
-      setUploadMessage('Failed to upload apartment.');
+      console.error('Error uploading property:', error.message);
+      setUploadMessage('Failed to upload property.');
     } finally {
       setSubmitting(false);
     }
@@ -92,17 +92,17 @@ const ApartmentForm = ({ onClose }) => {
   return (
     <div className="inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <div className="bg-white p-8 w-96 rounded-lg shadow-lg">
-        <h2 className="text-lg font-semibold mb-4">Upload Apartment</h2>
+        <h2 className="text-lg font-semibold mb-4">Upload Apartment Property</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-              Address
+            <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+              Location
             </label>
             <input
               type="text"
-              id="address"
-              name="address"
-              value={formData.address}
+              id="location"
+              name="location"
+              value={formData.location}
               onChange={handleInputChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               required

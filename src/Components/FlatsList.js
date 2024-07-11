@@ -3,14 +3,14 @@ import axios from 'axios';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const PropertyList = () => {
+const FlatsList = () => {
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [fullscreenCarousel, setFullscreenCarousel] = useState(null);
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost/Gethello.php');
+            const response = await axios.get('http://localhost/gethello.php');
             if (Array.isArray(response.data)) {
                 setProperties(response.data);
             } else {
@@ -27,19 +27,7 @@ const PropertyList = () => {
         fetchData();
     }, []);
 
-    const handleDelete = async (id) => {
-        try {
-            const response = await axios.delete(`http://localhost/del.php?id=${id}`);
-            if (response.status === 200) {
-                fetchData();
-                console.log(`Property with ID ${id} deleted successfully.`);
-            } else {
-                console.error(`Failed to delete property with ID ${id}. Status: ${response.status}`);
-            }
-        } catch (error) {
-            console.error('Error deleting property:', error.message);
-        }
-    };
+   
 
     const openFullscreenCarousel = (property) => {
         setFullscreenCarousel(property);
@@ -99,12 +87,7 @@ const PropertyList = () => {
                                 <h2 className="text-xl font-bold mb-2">{property.Location}</h2>
                                 <p className="text-gray-700 mb-2">{property.Description}</p>
                                 <p className="text-gray-800 font-bold">{property.Price}</p>
-                                <button
-                                    onClick={() => handleDelete(property.ID)}
-                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-                                >
-                                    Delete
-                                </button>
+                                
                             </div>
                         </div>
                     ))}
@@ -166,9 +149,8 @@ const PropertyList = () => {
 
 
 
-
         </div>
     );
 };
 
-export default PropertyList;
+export default FlatsList;

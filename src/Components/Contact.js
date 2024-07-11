@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import Navbar from './Navbar';
 import Axios from 'axios';
+import Footer from './Footer';
 
 function ContactPage() {
   const [successMessage, setSuccessMessage] = useState("");
@@ -60,7 +62,9 @@ function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
+    <div>
+      <Navbar/>
+    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center px-5 py-12 mt-16">
       <div className="max-w-4xl w-full bg-gray-800 p-8 rounded-lg shadow-lg">
         <h2 className="text-4xl font-sans text-center mb-8">Contact Us</h2>
         <div className="flex flex-wrap -mx-4">
@@ -98,7 +102,7 @@ function ContactPage() {
                   <label className="flex items-center">
                     <input type="radio" name="Radio" value="sell"  className="form-radio text-blue-500"
                       checked={data.Radio === 'sell'} onChange={handleChange} />
-                    <span className="ml-2">Sell</span>
+                    <span className="ml-2">Buy</span>
                   </label>
                   <label className="flex items-center">
                     <input type="radio" name="Radio" value="rent" className="form-radio text-blue-500"
@@ -106,9 +110,14 @@ function ContactPage() {
                     <span className="ml-2">Rent</span>
                   </label>
                   <label className="flex items-center">
+                    <input type="radio" name="Radio" value="rent" className="form-radio text-blue-500"
+                      checked={data.Radio === 'homeloans'} onChange={handleChange} />
+                    <span className="ml-2">Home loans</span>
+                  </label>
+                  <label className="flex items-center">
                     <input type="radio" name="Radio" value="other"  className="form-radio text-blue-500"
                       checked={data.Radio === 'other'} onChange={handleChange} />
-                    <span className="ml-2">Other</span>
+                    <span className="ml-2">Registrations</span>
                   </label>
                 </div>
               </div>
@@ -126,6 +135,9 @@ function ContactPage() {
           </div>
         </div>
       </div>
+      
+    </div>
+    <Footer/>
     </div>
   );
 }

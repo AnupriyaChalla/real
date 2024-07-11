@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 
 const Sidebar = ({ selectedMenuItem, onMenuItemClick }) => {
-  const menuItems = ['Dashboard', 'Profile', 'Settings', 'Messages','Propertylist']; // Example menu items
+  const menuItems = ['Dashboard', 'Profile', 'Settings', 'Messages','Propertylist','Residential','Apartments']; // Example menu items
   
   return (
     <div className="bg-blue-500 text-white w-48 flex-shrink-0">

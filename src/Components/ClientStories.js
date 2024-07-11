@@ -2,24 +2,24 @@ import React, { useState, useEffect } from 'react';
 
 const clientStories = [
   {
-    image:"https://shorturl.at/6HW8Q",
-    text: "Dwell Properties helped me find my dream home in no time! Their service is excellent and they truly care about their clients.",
-    name: "Doe, CA",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzgWicz92o8_fW_YxMlDIgX_hzYC6xz_qMdw&s",
+    text: " Abhi Estates helped me find my dream home in no time! Their service is excellent and they truly care about their clients.",
+    name: "Anu, Miyapur",
   },
   {
-    image:"https://shorturl.at/E27mO",
-    text: "Thanks to Dwell Properties, I secured a great investment property. The team is professional and very knowledgeable.",
-    name: "Smith, TX",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4doqqpcVao4xHXIq5sHCzYbh7-twfrr9eg&s",
+    text: "Thanks to Abhi Estates, I secured a great investment property. The team is professional and very knowledgeable.",
+    name:  "Vamshi, Kukatpally",
   },
   {
-    image:"https://shorturl.at/E27mO",
-    text: "Buying my first home was a breeze with Dwell Properties. They provided amazing support throughout the process.",
-    name: "Alice Johnson, NY",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxPNQVWAh9XsrXIQy38n9WGeh-8vcuLNikw&s",
+    text: "Buying my first home was a breeze with these Estates. They provided amazing support throughout the process.",
+    name: "Dileep, Banjara Hills",
   },
   {
-    image:"https://shorturl.at/6HW8Q",
-    text: "The experience with Dwell Properties was top-notch. They found me the perfect home and handled all the paperwork effortlessly.",
-    name: "Michael Brown, FL",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0S19FU9JgywqaYQqTDmnm3k_r_HbfaA1g6A&s",
+    text: "The experience with Abhi Estate Properties was top-notch. They found me the perfect home and handled all the paperwork effortlessly.",
+    name: "Bhavana, Uppal",
   },
 ];
 

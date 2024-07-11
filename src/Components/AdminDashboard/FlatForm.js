@@ -92,7 +92,7 @@ const FlatForm = ({ onClose }) => {
   return (
     <div className="inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <div className="bg-white p-8 w-96 rounded-lg shadow-lg">
-        <h2 className="text-lg font-semibold mb-4">Upload Property</h2>
+        <h2 className="text-lg font-semibold mb-4">Upload Flat Property</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="location" className="block text-sm font-medium text-gray-700">

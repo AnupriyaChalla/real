@@ -17,15 +17,13 @@ function Hero() {
   };
 
   return (
-    <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://rb.gy/d49pe3')" }}>
+    <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCFMviwXBSlE2GdB4e21Jr8YADvZCfJGUttw&s')" }}>
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <Navbar />
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
-        <h1 className="text-5xl font-bold">New Properties</h1>
-        <p className="mt-4 text-xl">EXCLUSIVELY BY ABHI ESTATES</p>
-        <button onClick={openModal} className="mt-8 bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600">
-          Explore
-        </button>
+        <h1 className="lg:text-5xl font-bold sm:text-2xl md:text-2xl animate-slideIn">New Properties</h1>
+        <p className="mt-4 text-xl sm:text-2xl md:text-2xl animate-slideIn">EXCLUSIVELY BY ABHI ESTATES</p>
+        
       </div>
 
       <Modal

@@ -3,14 +3,14 @@ import axios from 'axios';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const PropertyList = () => {
+const ResidentailList = () => {
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [fullscreenCarousel, setFullscreenCarousel] = useState(null);
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost/Gethello.php');
+            const response = await axios.get('http://localhost/resiget.php');
             if (Array.isArray(response.data)) {
                 setProperties(response.data);
             } else {
@@ -27,20 +27,6 @@ const PropertyList = () => {
         fetchData();
     }, []);
 
-    const handleDelete = async (id) => {
-        try {
-            const response = await axios.delete(`http://localhost/del.php?id=${id}`);
-            if (response.status === 200) {
-                fetchData();
-                console.log(`Property with ID ${id} deleted successfully.`);
-            } else {
-                console.error(`Failed to delete property with ID ${id}. Status: ${response.status}`);
-            }
-        } catch (error) {
-            console.error('Error deleting property:', error.message);
-        }
-    };
-
     const openFullscreenCarousel = (property) => {
         setFullscreenCarousel(property);
     };
@@ -51,7 +37,7 @@ const PropertyList = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-4">Flat Properties</h1>
+            <h1 className="text-3xl font-bold mb-4">Residential Lands</h1>
             {loading ? (
                 <p className="text-center">Loading...</p>
             ) : properties.length > 0 ? (
@@ -82,14 +68,22 @@ const PropertyList = () => {
                                                         }}
                                                     />
                                                 ) : (
-                                                    <video
-                                                        src={mediaUrl}
-                                                        controls
-                                                        className="w-full h-48 object-cover"
-                                                        onError={(e) => {
-                                                            console.error(`Failed to load video for Property ${property.ID}`, e);
-                                                        }}
-                                                    />
+                                                    <div className="relative w-full h-48">
+                                                        <video
+                                                            src={mediaUrl}
+                                                            controls
+                                                            className="w-full h-full object-cover"
+                                                            onError={(e) => {
+                                                                console.error(`Failed to load video for Property ${property.ID}`, e);
+                                                            }}
+                                                        />
+                                                        <button
+                                                            className="absolute inset-0 flex items-center justify-center text-white text-4xl"
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        >
+                                                            &#9658;
+                                                        </button>
+                                                    </div>
                                                 )}
                                             </div>
                                         );
@@ -99,12 +93,6 @@ const PropertyList = () => {
                                 <h2 className="text-xl font-bold mb-2">{property.Location}</h2>
                                 <p className="text-gray-700 mb-2">{property.Description}</p>
                                 <p className="text-gray-800 font-bold">{property.Price}</p>
-                                <button
-                                    onClick={() => handleDelete(property.ID)}
-                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
-                                >
-                                    Delete
-                                </button>
                             </div>
                         </div>
                     ))}
@@ -113,7 +101,7 @@ const PropertyList = () => {
                 <p className="text-center">No properties found with images or videos.</p>
             )}
 
-{fullscreenCarousel && (
+            {fullscreenCarousel && (
                 <div className="fixed inset-0 mb-40 bg-black bg-opacity-75 flex justify-center items-center z-50">
                     <div className="relative w-1/2 h-1/3 p-4 rounded-lg"
                         style={{ marginTop: '-20vh'}}>
@@ -163,12 +151,8 @@ const PropertyList = () => {
                     </div>
                 </div>
             )}
-
-
-
-
         </div>
     );
 };
 
-export default PropertyList;
+export default ResidentailList;

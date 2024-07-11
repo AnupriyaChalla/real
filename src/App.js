@@ -5,24 +5,32 @@ import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import About from './Components/About';
 import Contact from './Components/Contact';
-import Empty from './Components/Empty';
+import Services from './Components/Services';
 import Footer from './Components/Footer';
 import FloatingButton from './Components/FloatingButton';
 import AdHome from './Components/AdminDashboard/AdHome';
 import FlatForm from './Components/AdminDashboard/FlatForm';
+import ResidentialList from './Components/ResidentialList';
+import FlatsList from './Components/FlatsList';
+import ApartmentList from './Components/ApartmentList';
+
 
 function App() {
   return (
     <Router>
       <div>
+
         <FloatingButton />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/empty' element={<Empty />} />
+          <Route path='/Services' element={<Services />} />
           <Route path='/mars' element={<AdminLayout />} />
-          
+          <Route path="/residentialList" element={<ResidentialList />} />
+          <Route path="/flatList" element={<FlatsList />} />
+          <Route path="/apartmentList" element={<ApartmentList />} />
+
         </Routes>
       </div>
     </Router>
@@ -39,9 +47,9 @@ function AdminLayout() {
     <div>
       {isAdminPage ? null : <Navbar />}
       <AdHome />
-     {isAdminPage ? null : <Footer /> }
+      {isAdminPage ? null : <Footer />}
     </div>
-    
+
 
   );
 }

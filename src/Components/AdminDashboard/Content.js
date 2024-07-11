@@ -5,6 +5,8 @@ import ProfileContent from './ProfileContent';
 import SettingsContent from './SettingsContent';
 import MessagesContent from './MessagesContent';
 import PropertyList from './PropertyList';
+import ResiList from './ResiList';
+import ApartmentList from './ApartmentList';
 //import ResiList from './ResiList';
 const Content = ({ selectedMenuItem }) => {
   // Example content for each menu item
@@ -20,6 +22,10 @@ const Content = ({ selectedMenuItem }) => {
         return <MessagesContent />;
       case 'Propertylist':
         return <PropertyList/>;
+      case 'Residential':
+        return <ResiList/>;
+      case 'Apartments':
+        return <ApartmentList/>;
      
       default:
         return <DashboardContent />; // Default content
