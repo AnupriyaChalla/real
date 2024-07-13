@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import '../App.css';
 const clientStories = [
   {
     image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzgWicz92o8_fW_YxMlDIgX_hzYC6xz_qMdw&s",
@@ -42,7 +42,7 @@ function App() {
       
       <main className="container mx-auto mt-10">
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4 text-blue">CLIENTS STORIES</h2>
+          <h2 className="text-3xl font-bold mb-4 text-blue animate-fadeInDown">CLIENTS STORIES</h2>
         </div>
         <div className="flex items-center justify-center">
           <div className="w-full max-w-xl bg-gray-800 p-8 rounded-lg shadow-lg">

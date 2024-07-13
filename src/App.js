@@ -13,8 +13,8 @@ import FlatForm from './Components/AdminDashboard/FlatForm';
 import ResidentialList from './Components/ResidentialList';
 import FlatsList from './Components/FlatsList';
 import ApartmentList from './Components/ApartmentList';
-
-
+import './App.css';
+import PageTransition from './Components/TransitionPage';
 function App() {
   return (
     <Router>
@@ -23,7 +23,7 @@ function App() {
         <FloatingButton />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
+          <Route path='/about' element={<PageTransition><About /></PageTransition>} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/Services' element={<Services />} />
           <Route path='/mars' element={<AdminLayout />} />

@@ -28,19 +28,24 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  40% {
+      transform: translateY(-30px);
+  }
+  60% {
+      transform: translateY(-15px);
   }
 }
-
-@keyframes slideIn {
+@keyframes fadeInDown {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(-20px);
   }
   100% {
     opacity: 1;
@@ -48,8 +53,73 @@
   }
 }
 
-.animate-slideIn {
-  animation: slideIn 3s ease-out forwards;
+.animate-fadeInDown {
+  animation: fadeInDown 1s ease-out forwards;
+}
+
+.animation-delay-1 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-2 {
+  animation-delay: 1s;
 }
 
 
+
+
+
+#contact
+.slide-in {
+  transform: translateY(-100%); /* Start the element outside of the visible area */
+  transition: transform 0.5s ease;
+  transform: translateY(0); /* Move element into the visible area */
+}
+
+
+
+
+
+
+@keyframes slideInLeftFromMiddle {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-15%);
+  }
+}
+
+@keyframes slideInRightFromMiddle {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(15%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slideInLeftFromMiddle {
+  animation: slideInLeftFromMiddle 1s forwards;
+}
+
+.animate-slideInRightFromMiddle {
+  animation: slideInRightFromMiddle 1s forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s forwards;
+}
+
+.opacity-0 {
+  opacity: 0;
+}

@@ -100,8 +100,8 @@ function ContactPage() {
                 <label className="block text-sm font-semibold mb-2">Interested in:</label>
                 <div className="flex space-x-4">
                   <label className="flex items-center">
-                    <input type="radio" name="Radio" value="sell"  className="form-radio text-blue-500"
-                      checked={data.Radio === 'sell'} onChange={handleChange} />
+                    <input type="radio" name="Radio" value="buy"  className="form-radio text-blue-500"
+                      checked={data.Radio === 'buy'} onChange={handleChange} />
                     <span className="ml-2">Buy</span>
                   </label>
                   <label className="flex items-center">
@@ -110,13 +110,13 @@ function ContactPage() {
                     <span className="ml-2">Rent</span>
                   </label>
                   <label className="flex items-center">
-                    <input type="radio" name="Radio" value="rent" className="form-radio text-blue-500"
+                    <input type="radio" name="Radio" value="homeloans" className="form-radio text-blue-500"
                       checked={data.Radio === 'homeloans'} onChange={handleChange} />
                     <span className="ml-2">Home loans</span>
                   </label>
                   <label className="flex items-center">
-                    <input type="radio" name="Radio" value="other"  className="form-radio text-blue-500"
-                      checked={data.Radio === 'other'} onChange={handleChange} />
+                    <input type="radio" name="Radio" value="registrations"  className="form-radio text-blue-500"
+                      checked={data.Radio === 'registrations'} onChange={handleChange} />
                     <span className="ml-2">Registrations</span>
                   </label>
                 </div>
@@ -142,4 +142,4 @@ function ContactPage() {
   );
 }
 
-export default ContactPage;
+export default ContactPage; 
