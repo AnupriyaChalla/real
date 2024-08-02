@@ -36,7 +36,7 @@ const ResidentialForm = ({ onClose }) => {
     }
 
     try {
-      const response = await fetch('http://localhost/resipost.php', {
+      const response = await fetch('https://theabhiestates.com/resipost.php', {
         method: 'POST',
         body: formDataToSend,
       });

@@ -10,7 +10,7 @@ const ApartmentList = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost/apartget.php');
+            const response = await axios.get('https://theabhiestates.com/apartget.php');
             if (Array.isArray(response.data)) {
                 setProperties(response.data);
             } else {
@@ -29,7 +29,9 @@ const ApartmentList = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost/delapart.php?id=${id}`);
+            const response = await axios.delete(`https://theabhiestates.com/delapart.php?id=${id}`, {
+                timeout: 5000, // Increase the timeout if needed
+            });
             if (response.status === 200) {
                 fetchData();
                 console.log(`Property with ID ${id} deleted successfully.`);
@@ -56,7 +58,7 @@ const ApartmentList = () => {
                 <p className="text-center">Loading...</p>
             ) : properties.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {properties.map(property => (
+                    {properties.map((property) => (
                         <div key={property.ID} className="bg-white rounded-lg shadow-lg overflow-hidden">
                             <Carousel
                                 showThumbs={false}
@@ -66,10 +68,10 @@ const ApartmentList = () => {
                                 onClickItem={() => openFullscreenCarousel(property)}
                             >
                                 {Object.values(property.MediaFiles)
-                                    .filter(media => media !== 'none')
+                                    .filter((media) => media !== 'none')
                                     .map((media, index) => {
                                         const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                        const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                        const mediaUrl = `https://theabhiestates.com/${media}`; // Adjust this URL format based on your server setup
                                         return (
                                             <div key={index}>
                                                 {isImage ? (
@@ -113,10 +115,12 @@ const ApartmentList = () => {
                 <p className="text-center">No properties found with images or videos.</p>
             )}
 
-{fullscreenCarousel && (
+            {fullscreenCarousel && (
                 <div className="fixed inset-0 mb-40 bg-black bg-opacity-75 flex justify-center items-center z-50">
-                    <div className="relative w-1/2 h-1/3 p-4 rounded-lg"
-                        style={{ marginTop: '-20vh'}}>
+                    <div
+                        className="relative w-1/2 h-1/3 p-4 rounded-lg"
+                        style={{ marginTop: '-20vh' }}
+                    >
                         <Carousel
                             showThumbs={false}
                             autoPlay={true}
@@ -125,10 +129,10 @@ const ApartmentList = () => {
                             className="h-full"
                         >
                             {Object.values(fullscreenCarousel.MediaFiles)
-                                .filter(media => media !== 'none')
+                                .filter((media) => media !== 'none')
                                 .map((media, index) => {
                                     const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                    const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                    const mediaUrl = `https://theabhiestates.com/${media}`; // Adjust this URL format based on your server setup
                                     return (
                                         <div key={index} className="h-full flex items-center justify-center">
                                             {isImage ? (
@@ -163,9 +167,6 @@ const ApartmentList = () => {
                     </div>
                 </div>
             )}
-
-
-
         </div>
     );
 };

@@ -10,7 +10,7 @@ const ResidentailList = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost/resiget.php');
+            const response = await axios.get('https://theabhiestates.com/resiget.php');
             if (Array.isArray(response.data)) {
                 setProperties(response.data);
             } else {
@@ -55,7 +55,7 @@ const ResidentailList = () => {
                                     .filter(media => media !== 'none')
                                     .map((media, index) => {
                                         const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                        const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                        const mediaUrl = `https://theabhiestates.com/${media}`; // Adjust this URL format based on your server setup
                                         return (
                                             <div key={index}>
                                                 {isImage ? (
@@ -102,9 +102,8 @@ const ResidentailList = () => {
             )}
 
             {fullscreenCarousel && (
-                <div className="fixed inset-0 mb-40 bg-black bg-opacity-75 flex justify-center items-center z-50">
-                    <div className="relative w-1/2 h-1/3 p-4 rounded-lg"
-                        style={{ marginTop: '-20vh'}}>
+                <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4">
+                    <div className="relative w-full max-w-4xl h-full md:h-auto bg-white rounded-lg shadow-lg">
                         <Carousel
                             showThumbs={false}
                             autoPlay={true}
@@ -116,14 +115,14 @@ const ResidentailList = () => {
                                 .filter(media => media !== 'none')
                                 .map((media, index) => {
                                     const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                    const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                    const mediaUrl = `https://theabhiestates.com/${media}`;
                                     return (
                                         <div key={index} className="h-full flex items-center justify-center">
                                             {isImage ? (
                                                 <img
                                                     src={mediaUrl}
                                                     alt={`Fullscreen Property ${fullscreenCarousel.ID} Media ${index + 1}`}
-                                                    className="w-full h-full object-cover"
+                                                    className="w-full h-full object-contain"
                                                     onError={(e) => {
                                                         console.error(`Failed to load fullscreen image for Property ${fullscreenCarousel.ID} Media ${index + 1}`, e);
                                                     }}
@@ -132,7 +131,7 @@ const ResidentailList = () => {
                                                 <video
                                                     src={mediaUrl}
                                                     controls
-                                                    className="w-full h-full object-cover"
+                                                    className="w-full h-full object-contain"
                                                     onError={(e) => {
                                                         console.error(`Failed to load fullscreen video for Property ${fullscreenCarousel.ID}`, e);
                                                     }}
@@ -144,7 +143,7 @@ const ResidentailList = () => {
                         </Carousel>
                         <button
                             onClick={closeFullscreenCarousel}
-                            className="absolute top-4 right-12 text-white text-2xl hover:text-gray-300"
+                            className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
                         >
                             &#x2715;
                         </button>

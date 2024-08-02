@@ -10,7 +10,7 @@ const ApartmentList = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost/apartget.php');
+            const response = await axios.get('https://theabhiestates.com/apartget.php');
             if (Array.isArray(response.data)) {
                 setProperties(response.data);
             } else {
@@ -27,8 +27,6 @@ const ApartmentList = () => {
         fetchData();
     }, []);
 
-   
-
     const openFullscreenCarousel = (property) => {
         setFullscreenCarousel(property);
     };
@@ -39,7 +37,7 @@ const ApartmentList = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-4">Apartments </h1>
+            <h1 className="text-3xl font-bold mb-4">Apartments</h1>
             {loading ? (
                 <p className="text-center">Loading...</p>
             ) : properties.length > 0 ? (
@@ -57,7 +55,7 @@ const ApartmentList = () => {
                                     .filter(media => media !== 'none')
                                     .map((media, index) => {
                                         const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                        const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                        const mediaUrl = `https://theabhiestates.com/${media}`; // Adjust this URL format based on your server setup
                                         return (
                                             <div key={index}>
                                                 {isImage ? (
@@ -87,7 +85,6 @@ const ApartmentList = () => {
                                 <h2 className="text-xl font-bold mb-2">{property.Location}</h2>
                                 <p className="text-gray-700 mb-2">{property.Description}</p>
                                 <p className="text-gray-800 font-bold">{property.Price}</p>
-                               
                             </div>
                         </div>
                     ))}
@@ -96,10 +93,9 @@ const ApartmentList = () => {
                 <p className="text-center">No properties found with images or videos.</p>
             )}
 
-{fullscreenCarousel && (
-                <div className="fixed inset-0 mb-40 bg-black bg-opacity-75 flex justify-center items-center z-50">
-                    <div className="relative w-1/2 h-1/3 p-4 rounded-lg"
-                        style={{ marginTop: '-20vh'}}>
+            {fullscreenCarousel && (
+                <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+                    <div className="relative w-full h-full md:w-3/4 md:h-3/4 lg:w-2/3 lg:h-2/3 p-4">
                         <Carousel
                             showThumbs={false}
                             autoPlay={true}
@@ -111,7 +107,7 @@ const ApartmentList = () => {
                                 .filter(media => media !== 'none')
                                 .map((media, index) => {
                                     const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                    const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                    const mediaUrl = `https://theabhiestates.com/${media}`; // Adjust this URL format based on your server setup
                                     return (
                                         <div key={index} className="h-full flex items-center justify-center">
                                             {isImage ? (
@@ -146,12 +142,8 @@ const ApartmentList = () => {
                     </div>
                 </div>
             )}
-
-
         </div>
     );
 };
 
 export default ApartmentList;
-
-

@@ -33,7 +33,7 @@ const ApartmentForm = ({ onClose }) => {
     }
 
     try {
-      const response = await fetch('http://localhost/apartpost.php', {
+      const response = await fetch('https://theabhiestates.com/apartpost.php', {
         method: 'POST',
         body: formDataToSend,
       });
@@ -127,7 +127,7 @@ const ApartmentForm = ({ onClose }) => {
               Price
             </label>
             <input
-              type="number"
+              type="text"
               id="price"
               name="price"
               value={formData.price}

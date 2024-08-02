@@ -33,7 +33,7 @@ const FlatForm = ({ onClose }) => {
     }
 
     try {
-      const response = await fetch('http://localhost/hello.php', {
+      const response = await fetch('https://theabhiestates.com/flatpost.php', {
         method: 'POST',
         body: formDataToSend,
       });
@@ -127,7 +127,7 @@ const FlatForm = ({ onClose }) => {
               Price
             </label>
             <input
-              type="number"
+              type="text"
               id="price"
               name="price"
               value={formData.price}

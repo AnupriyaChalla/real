@@ -11,7 +11,7 @@ const AdHome = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-full ">
       {/* Left Sidebar */}
       <Sidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={handleMenuItemClick} />
       

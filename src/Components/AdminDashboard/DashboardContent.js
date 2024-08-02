@@ -26,7 +26,7 @@ function DashboardContent() {
 
   return (
     <>
-      <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-4 mb-4">
+      <div className="flex items-center justify-between bg-white shadow-md rounded-lg md:p-4 sm:p-6 mb-4">
         <div>
           <span className="text-lg font-semibold">INDEPENDENT FLATS/ VILLAS</span>
         </div>

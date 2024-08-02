@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import Hero from './Hero';
 import ClientStories from './ClientStories';
 import Contact from './Contact';
 import useIntersectionObserver from './useIntersectionObserver';
 import resipic from '../Assests/1.jpg'; // Ensure this path is correct
 import apar from '../Assests/apar.png'; // Ensure this path is correct
-import villa from '../Assests/5.jpg'; // Ensure this path is correct
+import villa from '../Assests/villa.jpg'; // Ensure this path is correct
+
 
 const propertyTypes = [
   { name: 'Residential Land', path: '/residentialList', src: resipic },
@@ -23,13 +24,13 @@ function Home() {
   });
 
   return (
-    <div className="p-8 mt-30">
+    <div className="mt-30 md:w-full sm:w-full ">
       <Hero />
       <h1 className="text-3xl mt-20 font-bold mb-6 text-center">
         Real Estate Listings
       </h1>
-      <SearchBar />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+      {/* <SearchBar /> */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-10">
         {propertyTypes.map((type, index) => (
           <Link key={index} to={type.path}>
             <div
@@ -54,10 +55,10 @@ function Home() {
           </Link>
         ))}
       </div>
-      <div className="px-8 py-8">
+      <div className="px-8 py-8 text-white">
         <ClientStories />
-      </div>
-      <Contact />
+      </div >
+      <div className='sm-full'><Contact /></div>
     </div>
   );
 }

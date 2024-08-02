@@ -1,21 +1,18 @@
-// WhatsAppButton.js
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 const WhatsAppButton = () => {
-  const phoneNumber = '7337505390';
+  const phoneNumber = '9849155800';
 
   const openWhatsAppChat = () => {
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
   };
 
   return (
-    <button
-      className="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-      onClick={openWhatsAppChat}
-    >
-      WhatsApp
-    </button>
-    
+    <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: '1000' }}>
+      <FontAwesomeIcon icon={faWhatsapp} size="3x" style={{ color: '#25D366', cursor: 'pointer' }} onClick={openWhatsAppChat} />
+    </div>
   );
 };
 

@@ -24,8 +24,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<PageTransition><About /></PageTransition>} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/Services' element={<Services />} />
+          <Route path='/contact' element={<PageTransition><Contact /></PageTransition>} />
+          <Route path='/Services' element={<PageTransition><Services /></PageTransition>} />
           <Route path='/mars' element={<AdminLayout />} />
           <Route path="/residentialList" element={<ResidentialList />} />
           <Route path="/flatList" element={<FlatsList />} />

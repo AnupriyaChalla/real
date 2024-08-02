@@ -10,7 +10,7 @@ const ResiList = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost/resiget.php');
+            const response = await axios.get('https://theabhiestates.com/resiget.php');
             if (Array.isArray(response.data)) {
                 setProperties(response.data);
             } else {
@@ -29,7 +29,7 @@ const ResiList = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost/delresi.php?id=${id}`);
+            const response = await axios.delete(`https://theabhiestates.com/delresi.php?id=${id}`);
             if (response.status === 200) {
                 fetchData();
                 console.log(`Property with ID ${id} deleted successfully.`);
@@ -69,7 +69,7 @@ const ResiList = () => {
                                     .filter(media => media !== 'none')
                                     .map((media, index) => {
                                         const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                        const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                        const mediaUrl = `https://theabhiestates.com/${media}`; // Adjust this URL format based on your server setup
                                         return (
                                             <div key={index}>
                                                 {isImage ? (
@@ -128,7 +128,7 @@ const ResiList = () => {
                                 .filter(media => media !== 'none')
                                 .map((media, index) => {
                                     const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                    const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                    const mediaUrl = `https://theabhiestates.com/${media}`; // Adjust this URL format based on your server setup
                                     return (
                                         <div key={index} className="h-full flex items-center justify-center">
                                             {isImage ? (

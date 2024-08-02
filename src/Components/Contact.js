@@ -8,7 +8,7 @@ function ContactPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const url = "http://localhost/index.php"; 
+  const url = "https://theabhiestates.com/contact.php"; 
   const [data, setData] = useState({
     Name: "",
     Email:"",
@@ -64,9 +64,10 @@ function ContactPage() {
   return (
     <div>
       <Navbar/>
-    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center px-5 py-12 mt-16">
-      <div className="max-w-4xl w-full bg-gray-800 p-8 rounded-lg shadow-lg">
-        <h2 className="text-4xl font-sans text-center mb-8">Contact Us</h2>
+    <div className="md:min-h-screen sm:w-full bg-gray-900 text-white  flex items-center justify-center md:px-5 md:py-12 sm:px-1 sm:py-4">
+      <div className="max-w-4xl w-full bg-gray-800 mt-5 rounded-lg shadow-lg">
+        <div className='p-5 mt-4'>
+        <h2 className="text-4xl font-sans text-center mb-6 sm:mt-10">Contact Us</h2>
         <div className="flex flex-wrap -mx-4">
           <div className="w-full md:w-1/2 px-4">
             <h3 className="text-2xl font-sans mb-4">FIND YOUR HOME!!</h3>
@@ -87,8 +88,8 @@ function ContactPage() {
                 </div>
               </div>
               <div>
-                <label htmlFor="Email" className="block text-sm font-semibold mb-2">Email <span className="text-red-500">*</span></label>
-                <input type="email" id="Email" name="Email" required className="w-full border border-gray-600 bg-gray-700 rounded px-4 py-2 text-white" value={data.Email}
+                <label htmlFor="Email" className="block text-sm font-semibold mb-2">Email <span className="text-red-500"></span></label>
+                <input type="email" id="Email" name="Email" className="w-full border border-gray-600 bg-gray-700 rounded px-4 py-2 text-white" value={data.Email}
                   onChange={handleChange} />
               </div>
               <div>
@@ -135,7 +136,7 @@ function ContactPage() {
           </div>
         </div>
       </div>
-      
+      </div>
     </div>
     <Footer/>
     </div>

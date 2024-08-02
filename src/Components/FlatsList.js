@@ -10,7 +10,7 @@ const FlatsList = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost/gethello.php');
+            const response = await axios.get('https://theabhiestates.com/flatget.php');
             if (Array.isArray(response.data)) {
                 setProperties(response.data);
             } else {
@@ -26,8 +26,6 @@ const FlatsList = () => {
     useEffect(() => {
         fetchData();
     }, []);
-
-   
 
     const openFullscreenCarousel = (property) => {
         setFullscreenCarousel(property);
@@ -57,7 +55,7 @@ const FlatsList = () => {
                                     .filter(media => media !== 'none')
                                     .map((media, index) => {
                                         const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                        const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                        const mediaUrl = `https://theabhiestates.com/${media}`;
                                         return (
                                             <div key={index}>
                                                 {isImage ? (
@@ -87,7 +85,6 @@ const FlatsList = () => {
                                 <h2 className="text-xl font-bold mb-2">{property.Location}</h2>
                                 <p className="text-gray-700 mb-2">{property.Description}</p>
                                 <p className="text-gray-800 font-bold">{property.Price}</p>
-                                
                             </div>
                         </div>
                     ))}
@@ -96,10 +93,9 @@ const FlatsList = () => {
                 <p className="text-center">No properties found with images or videos.</p>
             )}
 
-{fullscreenCarousel && (
-                <div className="fixed inset-0 mb-40 bg-black bg-opacity-75 flex justify-center items-center z-50">
-                    <div className="relative w-1/2 h-1/3 p-4 rounded-lg"
-                        style={{ marginTop: '-20vh'}}>
+            {fullscreenCarousel && (
+                <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4">
+                    <div className="relative w-full max-w-4xl h-full md:h-auto bg-white rounded-lg shadow-lg">
                         <Carousel
                             showThumbs={false}
                             autoPlay={true}
@@ -111,14 +107,14 @@ const FlatsList = () => {
                                 .filter(media => media !== 'none')
                                 .map((media, index) => {
                                     const isImage = media.toLowerCase().endsWith('.jpg') || media.toLowerCase().endsWith('.jpeg') || media.toLowerCase().endsWith('.png');
-                                    const mediaUrl = `http://localhost/${media}`; // Adjust this URL format based on your server setup
+                                    const mediaUrl = `https://theabhiestates.com/${media}`;
                                     return (
                                         <div key={index} className="h-full flex items-center justify-center">
                                             {isImage ? (
                                                 <img
                                                     src={mediaUrl}
                                                     alt={`Fullscreen Property ${fullscreenCarousel.ID} Media ${index + 1}`}
-                                                    className="w-full h-full object-cover"
+                                                    className="w-full h-full object-contain"
                                                     onError={(e) => {
                                                         console.error(`Failed to load fullscreen image for Property ${fullscreenCarousel.ID} Media ${index + 1}`, e);
                                                     }}
@@ -127,7 +123,7 @@ const FlatsList = () => {
                                                 <video
                                                     src={mediaUrl}
                                                     controls
-                                                    className="w-full h-full object-cover"
+                                                    className="w-full h-full object-contain"
                                                     onError={(e) => {
                                                         console.error(`Failed to load fullscreen video for Property ${fullscreenCarousel.ID}`, e);
                                                     }}
@@ -146,9 +142,6 @@ const FlatsList = () => {
                     </div>
                 </div>
             )}
-
-
-
         </div>
     );
 };
